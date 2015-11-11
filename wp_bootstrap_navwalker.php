@@ -20,6 +20,9 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 *
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param int $depth Depth of page. Used for padding.
+	 * @param array $args An array of arguments. @see wp_nav_menu()
+	 *
+	 * @return void
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
@@ -35,6 +38,8 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 * @param int $depth Depth of menu item. Used for padding.
 	 * @param object|array $args An array of arguments. @see wp_nav_menu()
 	 * @param int $id Current item ID.
+	 *
+	 * @return void
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
@@ -135,6 +140,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 * @param int $depth Depth of current element.
 	 * @param array $args
 	 * @param string $output Passed by reference. Used to append additional content.
+	 *
 	 * @return null Null on failure with no changes to parameters.
 	 */
 	public function display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output ) {
@@ -152,7 +158,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 
 	/**
 	 * Menu Fallback
-	 * =============
+	 *
 	 * If this function is assigned to the wp_nav_menu's fallback_cb variable
 	 * and a manu has not been assigned to the theme location in the WordPress
 	 * menu manager the function with display nothing to a non-logged in user,
@@ -160,6 +166,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 *
 	 * @param array $args passed from the wp_nav_menu function.
 	 *
+	 * @return void
 	 */
 	public static function fallback( $args ) {
 		if ( current_user_can( 'manage_options' ) ) {
@@ -200,4 +207,4 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	}
 }
 
-endif; // class_exists( 'wp_bootstrap_navwalker' )
+endif;
