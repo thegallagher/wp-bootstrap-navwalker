@@ -31,8 +31,8 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param object $item Menu item data object.
 	 * @param int $depth Depth of menu item. Used for padding.
-	 * @param int $current_page Menu item ID.
-	 * @param object $args
+	 * @param object|array $args An array of arguments. @see wp_nav_menu()
+	 * @param int $id Current item ID.
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
